@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CardComponent } from '../components';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardComponent, FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: '../templates/pages/home.html'
 })
 export class HomeComponent {
