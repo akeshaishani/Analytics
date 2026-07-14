@@ -1,0 +1,36 @@
+<div
+  class="min-h-screen bg-gradient-to-r from-blue-600 to-purple-600 flex justify-center items-center w-full"
+>
+  <!-- Hero Section -->
+  <section class="text-white py-20 w-full">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold mb-4">Analyze Any Site</h1>
+      <p class="text-xl mb-8">Find out websites speed, performance, and more!</p>
+    </div>
+    <div class="flex flex-col items-center gap-4 w-full">
+      <div class="flex justify-center gap-4 w-full">
+        <input
+          type="text"
+          placeholder="Enter website URL (e.g., example.com)"
+          [(ngModel)]="websiteUrl"
+          (input)="onUrlInput()"
+          class="px-4 py-3 max-w-[500px] w-full rounded-md outline-none text-black focus:ring-2 focus:ring-blue-400"
+          [disabled]="isAnalyzing"
+        />
+        <button 
+          (click)="onAnalyze()"
+          [disabled]="isAnalyzing"
+          class="bg-black/40 p-3 px-8 rounded-lg hover:bg-black/50 duration-300 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap">
+          {{ isAnalyzing ? 'Processing...' : 'Analyze' }}
+        </button>
+      </div>
+      
+      <!-- URL Preview -->
+      <div *ngIf="websiteUrl && websiteUrl.trim() && !websiteUrl.includes('://')" 
+           class="text-white/80 text-sm bg-black/20 px-4 py-2 rounded-lg">
+        <span class="opacity-75">Will analyze:</span> 
+        <span class="font-medium">https://{{ websiteUrl.trim() }}</span>
+      </div>
+    </div>
+  </section>
+</div>
